@@ -35,20 +35,23 @@ void Console::ConsoleCommand(std::string cmd)
 
 void Console::Process(std::deque<std::string> args)
 {
-    if (args.size() > 1)
+    if (args.size() > 0)
     {
-        if (c0.find(args[0]) != c0.end())
+        if (args.size() > 1)
         {
-            auto cmd = args[0];
-            args.pop_front();
-            c0[cmd](args);
+            if (c0.find(args[0]) != c0.end())
+            {
+                auto cmd = args[0];
+                args.pop_front();
+                c0[cmd](args);
+            }
         }
-    }
-    else
-    {
-        if (c1.find(args[0]) != c1.end())
+        else
         {
-            c1[args[0]]();
+            if (c1.find(args[0]) != c1.end())
+            {
+                c1[args[0]]();
+            }
         }
     }
 }
