@@ -1,6 +1,7 @@
 #include "Console.hpp"
 
-std::unordered_map <std::string, std::function<void(std::deque<std::string>)>> Console::Commands{};
+std::unordered_map <std::string, std::function<void(std::deque<std::string>)>> Console::c0{};
+std::unordered_map <std::string, std::function<void()>> Console::c1{};
 
 std::deque<std::string> Console::Split(const std::string& s, char delimiter)
 {
@@ -17,15 +18,13 @@ std::deque<std::string> Console::Split(const std::string& s, char delimiter)
 void Console::Set(std::string cmd, std::function<void(std::deque<std::string>)> func)
 {
 	std::pair<std::string, std::function<void(std::deque<std::string>)>> ins(cmd, func);
-	Commands.insert(ins);
+	c0.insert(ins);
 }
 
-void Console::ToString()
+void Console::Set(std::string cmd, std::function<void()> func)
 {
-	for (auto i : Commands)
-	{
-		std::cout << &i.second << " " << i.first << std::endl;
-	}
+    std::pair<std::string, std::function<void()>> ins(cmd, func);
+    c1.insert(ins);
 }
 
 void Console::ConsoleCommand(std::string cmd)
@@ -36,13 +35,20 @@ void Console::ConsoleCommand(std::string cmd)
 
 void Console::Process(std::deque<std::string> args)
 {
-    if (args.size() > 0)
+    if (args.size() > 1)
     {
-        if (Commands.find(args[0]) != Commands.end())
+        if (c0.find(args[0]) != c0.end())
         {
             auto cmd = args[0];
             args.pop_front();
-            Commands[cmd](args);
+            c0[cmd](args);
+        }
+    }
+    else
+    {
+        if (c1.find(args[0]) != c1.end())
+        {
+            c1[args[0]]();
         }
     }
 }
