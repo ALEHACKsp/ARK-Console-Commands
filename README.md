@@ -8,14 +8,14 @@ typedef sdk::FString* (*tConsoleCommand)(sdk::UConsole*, sdk::FString const&);
 static tConsoleCommand rConsoleCommand{ nullptr }; // Fill in offset of function here
 
 // UConsole::ConsoleCommand hook
-	sdk::FString* hConsoleCommand(sdk::UConsole* this__, const sdk::FString* Command)
-	{
-		rConsoleCommand(this__, *Command);
-		if (Command->IsValid())
-		{ 
-			Console::ConsoleCommand(Command->ToString());
-		}
+sdk::FString* hConsoleCommand(sdk::UConsole* this__, const sdk::FString* Command)
+{
+	rConsoleCommand(this__, *Command);
+	if (Command->IsValid())
+	{ 
+		Console::ConsoleCommand(Command->ToString());
 	}
+}
 ```
 
 ```cpp
