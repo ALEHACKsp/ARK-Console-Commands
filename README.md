@@ -30,7 +30,7 @@ void InitConsoleHooks() {
 }
 ```
 
-``cpp
+```cpp
 // Definition of functions being called
 void GetFOV();
 void SetFOV(std::deque<std::string>);
