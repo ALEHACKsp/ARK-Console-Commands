@@ -22,7 +22,7 @@ static tConsoleCommand rConsoleCommand{ nullptr }; // Fill in offset of function
 void InitConsoleHooks() {
   // Toggle aimbot and ESP
   Console::Set("aim",			[]() { bAimbot = !bAimbot; });
-  Console::Set("esp",		  []() { bESP = !bESP; });
+  Console::Set("esp",		  	[]() { bESP = !bESP; });
   
   // Get current FOV or set new FOV
   Console::Set("fov",			[]() { ARK->GetFOV(); });
