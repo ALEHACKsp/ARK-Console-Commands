@@ -35,7 +35,7 @@ void InitConsoleHooks() {
 void GetFOV();
 void SetFOV(std::deque<std::string>);
 
-void MyARK::SetFOV()
+void MyARK::GetFOV()
 {
   std::cout << "Current FOV is " << MaxFOV << std::endl;
 }
