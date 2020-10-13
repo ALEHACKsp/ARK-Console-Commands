@@ -44,7 +44,6 @@ void MyARK::SetFOV(std::deque<std::string> Args)
 {
   if (Args.size() > 0)
   {
-    std::string::size_type sz;
     MaxFOV = std::stof(Args[0]);
     std::cout << "MaxFOV set to " << MaxFOV << std::endl;
   }
