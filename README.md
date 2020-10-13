@@ -24,7 +24,7 @@ void InitConsoleHooks() {
   Console::Set("aim",	[]() { bAimbot = !bAimbot; });
   Console::Set("esp",	[]() { bESP = !bESP; });
   
-  // Get current FOV or set new FOV
+  // Get current FOV or set new FOV based on the number of arguments provided (none or > 1)
   Console::Set("fov",	[]() { ARK->GetFOV(); });
   Console::Set("fov",	[](std::deque<std::string> args) { ARK->SetFOV(args); });
 }
